@@ -1,0 +1,21 @@
+{
+  "entity_name": "location",
+  "resulting_folder_name": "location",
+  "fields": [
+    {
+      "name": "name",
+      "type": "str",
+      "db_type": "Column(String(255))"
+    },
+    {
+      "name": "description",
+      "type": "str",
+      "db_type": "Column(String(255))"
+    },
+    {
+      "name": "start",
+      "type": "datetime",
+      "db_type": "Column(TIMESTAMP(timezone=True))"
+    }
+  ]
+}
