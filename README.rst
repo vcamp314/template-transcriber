@@ -1,4 +1,4 @@
-template Transcriber Package
+Template Transcriber Package
 =================================
 Command line tool for generating file structures from Jinja2 templates
 
@@ -11,7 +11,7 @@ Installation
 +++++++++++++
 Installing package with dependencies (update accordingly for actual github link/PyPI)::
 
-    $ python3 -m pip install git+https://github.com/user/tt
+    $ python3 -m pip install git+https://github.com/vcamp314/template-transcriber
 
 ++++++
 Usage
