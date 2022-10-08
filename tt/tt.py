@@ -27,7 +27,7 @@ def load(file_path: str):
 def generate_files(scheme_path: str, template_path: str):
     """Generates file structure based on jinja2 templates.
     Example run:
-    >>> generate_files('./tests/data/example.json', './path/to/template')
+    />>> generate_files('./tests/data/example.json', './path/to/template')
     transcribing templates...
     transcription completed
 

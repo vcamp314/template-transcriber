@@ -21,7 +21,7 @@ How to run:
 - change directory to where you want your resulting file structures created
 - run the below command, replacing the paths for those pointing to where the json scheme and where the template structure you wish to use is::
 
-    $ tt ./path/to/json/scheme ./path/to/template
+    $ python3 -m tt ./path/to/json/scheme ./path/to/template
 
 
 Development
@@ -48,6 +48,6 @@ Testing
 ++++++++
 how to run unit tests including doctests::
 
-    $ pytest
+    $ python3 -m pytest
 
 
