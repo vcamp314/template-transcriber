@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-from .tt import generate_files
+from tt import generate_files
 
 
 def apply_generation(arg):
