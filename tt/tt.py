@@ -5,6 +5,9 @@ This module is used to generate files based on Jinja2 template structures.
 import os
 import json
 from jinja2 import Environment, FileSystemLoader
+import shutil
+
+DIRS_TO_BE_IGNORED = ['.git', '.idea']
 
 
 def ensure_dir_path_exists(file_path: str):
@@ -27,7 +30,7 @@ def load(file_path: str):
 def generate_files(scheme_path: str, template_path: str):
     """Generates file structure based on jinja2 templates.
     Example run:
-    />>> generate_files('./tests/data/example.json', './path/to/template')
+    />>> generate_files('./tests/data/example.json', './path/to/template/')
     transcribing templates...
     transcription completed
 
@@ -52,13 +55,24 @@ def generate_files(scheme_path: str, template_path: str):
     resulting_folder_name = scheme.get('resulting_folder_name')
     resulting_folder_name = resulting_folder_name if resulting_folder_name else 'template-result'
     print('scheme used: ', scheme)
+    print('template_path: ', template_path)
 
     for file_path in file_list:
-        print(file_path)
 
+        if any(dir in file_path for dir in DIRS_TO_BE_IGNORED):
+            continue
+
+        # todo: this line is sensitive to user not putting in a ending slash, causing the write location to be broken,
+        #  might be worthwhile to update this
         file_path_from_env = file_path.replace(template_path, '')
+
         template = env.get_template(file_path_from_env)
         file_txt = template.render(**scheme)
-        write(file_txt, os.path.join(curr_path, resulting_folder_name, file_path_from_env))
+        outfile_path = os.path.join(curr_path, resulting_folder_name, file_path_from_env)
+
+        print('writing file: ', outfile_path)
+        write(file_txt, outfile_path)
+
+        shutil.copymode(file_path, outfile_path)
 
     print('transcription completed')
